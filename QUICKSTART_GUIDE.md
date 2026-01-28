@@ -13,39 +13,39 @@ BINANCE_API_KEY=your_testnet_api_key
 BINANCE_API_SECRET=your_testnet_secret
 ```
 
-### Bước 2: Chọn Bot Mode
+### Bước 2: Mở Tray App và Add Pair
 
-| Nếu bạn... | Chọn |
-|------------|------|
-| Tài khoản Hedge Mode | `bnbot-hedge-pro.exe` |
-| Tài khoản One-Way Mode | `bnbot-oneway-pro.exe` |
-| Không biết | Kiểm tra trên Binance Futures → Settings |
+1. Mở `bnbot-tray-pro.exe`
+2. Click **"Add Pair"**
+3. Nhập symbol: `BTCUSDT`
+4. **Chọn Bot Mode:**
 
-### Bước 3: Config Cơ Bản
+| Tài khoản của bạn | Chọn Mode |
+|-------------------|-----------|
+| Hedge Mode | `hedge-pro` |
+| One-Way Mode | `oneway-pro` |
+| Không biết? | Kiểm tra: Binance Futures → Settings → Position Mode |
 
-Mở `instances/BTCUSDT/bot_config.toml`:
+### Bước 3: Config Qua Quick Settings
 
-```toml
-[app]
-symbol = "BTCUSDT"
-use_testnet = true        # ← QUAN TRỌNG: true cho testnet
-mode = "SAFE"
-starter_entry = true
+Trong tab **Quick Settings**:
 
-[profiles.SAFE]
-leverage = 2
-base_order_usdt = 160     # ← >= 110 USDT
-max_position = 0.02       # ← Theo vốn của bạn
-```
+| Setting | Giá trị khuyến nghị | Ghi chú |
+|---------|---------------------|---------|
+| `base_order_usdt` | 160 | >= 110 USDT (min notional) |
+| `max_position` | 0.02 | Theo vốn của bạn |
+| `leverage` | 2 | Bắt đầu thấp |
+| `use_testnet` | ✓ checked | **QUAN TRỌNG** cho lần đầu |
+
+Hoặc mở tab **Advanced (PRO Settings)** để điều chỉnh chi tiết hơn.
 
 ### Bước 4: Chạy Bot
 
-**Qua Tray App:**
-1. Mở `bnbot-tray.exe` (hoặc `bnbot-tray-pro.exe`)
-2. Chọn pair BTCUSDT
-3. Click Start
+1. Chọn pair trong danh sách (tab Pairs)
+2. Click **Start**
+3. Xem logs ở tab **Logs**
 
-**Qua Command Line:**
+**Cách khác - Command Line:**
 ```cmd
 cd instances/BTCUSDT
 ..\..\bnbot-hedge-pro.exe
@@ -166,10 +166,9 @@ levels_each_side = 15
 
 | File | Nội Dung |
 |------|----------|
+| `BNBOT_COMPLETE_GUIDE.md` | Tài liệu đầy đủ (PRO + Standard) |
 | `CONFIG_USAGE_GUIDE.md` | Giải thích tất cả config |
 | `FLUSH_USAGE_GUIDE.md` | Hướng dẫn Inventory Flush |
-| `BNBOT_COMPLETE_GUIDE.md` | Tài liệu đầy đủ |
-| `BOT_PRO_GUIDE.md` | PRO features chi tiết |
 
 ---
 
